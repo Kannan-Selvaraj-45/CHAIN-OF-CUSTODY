@@ -1,334 +1,754 @@
-<html>
-	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Chain of Custody</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Create Authorized Party - Chain of Custody</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Create Authorized Party for Chain of Custody System">
 
-  <!-- Facebook and Twitter integration -->
-	<meta property="og:title" content=""/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
-	<meta property="og:description" content=""/>
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="Create Authorized Party - Chain of Custody"/>
+  <meta property="og:image" content="../static/images/og-image.jpg"/>
+  <meta property="og:url" content=""/>
+  <meta property="og:site_name" content="Chain of Custody"/>
+  <meta property="og:description" content="Create Authorized Party for Chain of Custody System"/>
+  <meta name="twitter:title" content="Create Authorized Party - Chain of Custody" />
+  <meta name="twitter:image" content="../static/images/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-	<link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700" rel="stylesheet">
-	
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="../static/css/animate.css">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="../static/css/icomoon.css">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="../static/css/bootstrap.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --primary-color: #3498db;
+      --secondary-color: #2c3e50;
+      --accent-color: #e74c3c;
+      --light-color: #f8f9fa;
+      --dark-color: #003333;
+      --success-color: #27ae60;
+      --warning-color: #f39c12;
+      --info-color: #3498db;
+      --danger-color: #e74c3c;
+      --gov-color: #27ae60;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #333;
+      overflow-x: hidden;
+      background-color: var(--light-color);
+    }
+    
+    /* Navbar Styles */
+    .navbar {
+      padding: 1rem 0;
+      transition: all 0.3s ease;
+      background-color: var(--dark-color);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      color: white;
+      font-size: 1.5rem;
+    }
+    
+    .navbar-brand:hover {
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .navbar-nav .nav-link {
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+      margin: 0 10px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: white;
+    }
+    
+    /* Removed the hover underline effect as requested */
+    
+    .navbar-toggler {
+      border: none;
+      color: white;
+    }
+    
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+    
+    /* Dropdown Menu */
+    .dropdown-menu {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 15px 0;
+      margin-top: 15px;
+    }
+    
+    .dropdown-item {
+      padding: 10px 25px;
+      font-weight: 500;
+      color: var(--secondary-color);
+      transition: all 0.3s ease;
+    }
+    
+    .dropdown-item:hover {
+      background-color: rgba(52, 152, 219, 0.1);
+      color: var(--primary-color);
+      padding-left: 30px;
+    }
+    
+    .dropdown-item i {
+      margin-right: 10px;
+      color: var(--primary-color);
+    }
+    
+    /* Auth Form Section */
+    .auth-section {
+      padding: 100px 0;
+    }
+    
+    .section-title {
+      margin-bottom: 30px;
+    }
+    
+    .section-title h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+      position: relative;
+      padding-bottom: 15px;
+      display: inline-block;
+    }
+    
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background-color: var(--gov-color);
+    }
+    
+    /* Form Card */
+    .form-card {
+      background-color: white;
+      border-radius: 15px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      height: 100%;
+      transition: all 0.3s ease;
+    }
+    
+    .form-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .form-label {
+      font-weight: 500;
+      color: var(--secondary-color);
+      margin-bottom: 8px;
+    }
+    
+    .form-control {
+      height: 50px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      padding: 10px 15px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+      border-color: var(--gov-color);
+      box-shadow: 0 0 0 0.25rem rgba(39, 174, 96, 0.25);
+    }
+    
+    .submit-btn {
+      height: 50px;
+      border-radius: 8px;
+      background-color: var(--gov-color);
+      border: none;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+    
+    .submit-btn:hover {
+      background-color: #219653;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .success-message {
+      background-color: rgba(39, 174, 96, 0.1);
+      border-left: 4px solid var(--success-color);
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      color: var(--success-color);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+    }
+    
+    .success-message i {
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+    
+    .error-message {
+      background-color: rgba(231, 76, 60, 0.1);
+      border-left: 4px solid var(--danger-color);
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      color: var(--danger-color);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+    }
+    
+    .error-message i {
+      margin-right: 10px;
+      font-size: 1.2rem;
+    }
+    
+    /* Image Container */
+    .image-container {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      height: 100%;
+    }
+    
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.5s ease;
+    }
+    
+    .image-container:hover img {
+      transform: scale(1.05);
+    }
+    
+    .image-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+      padding: 20px;
+      color: white;
+    }
+    
+    .image-overlay h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    
+    .image-overlay p {
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: var(--secondary-color);
+      color: white;
+      padding: 80px 0 0;
+    }
+    
+    .footer-widget {
+      margin-bottom: 40px;
+    }
+    
+    .footer-widget h4 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-widget h4::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--primary-color);
+    }
+    
+    .footer-widget p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+      display: block;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary-color);
+      padding-left: 5px;
+    }
+    
+    .contact-info {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .contact-info li {
+      margin-bottom: 15px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .contact-info i {
+      margin-right: 10px;
+      color: var(--primary-color);
+      font-size: 1.1rem;
+      margin-top: 3px;
+    }
+    
+    .social-icons {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+    }
+    
+    .social-icons li {
+      margin-right: 15px;
+    }
+    
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      transition: all 0.3s ease;
+    }
+    
+    .social-icons a:hover {
+      background-color: var(--primary-color);
+      transform: translateY(-5px);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding: 25px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 40px;
+    }
+    
+    .copyright p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+    
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      z-index: 99;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-5px);
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 991px) {
+      .auth-section {
+        padding: 80px 0;
+      }
+      
+      .image-container {
+        margin-bottom: 30px;
+        height: 400px;
+      }
+    }
+    
+    @media (max-width: 767px) {
+      .auth-section {
+        padding: 60px 0;
+      }
+      
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
+      
+      .image-container {
+        height: 300px;
+      }
+    }
+    
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .fadeInUp {
+      animation: fadeInUp 1s ease;
+    }
+    
+    .delay-1 {
+      animation-delay: 0.1s;
+    }
+    
+    .delay-2 {
+      animation-delay: 0.2s;
+    }
+    
+    .delay-3 {
+      animation-delay: 0.3s;
+    }
+  </style>
+  
+  <!-- JavaScript Validation -->
+  <script language="javascript">
+    function validate() {
+      if(document.form1.name.value=="") {
+        alert("Enter the Name");
+        document.form1.name.focus();
+        return false;
+      }
+      if(document.form1.designation.value=="") {
+        alert("Enter the Role / Designation");
+        document.form1.designation.focus();
+        return false;
+      }
+      if(document.form1.mobile.value=="") {
+        alert("Enter the Mobile No.");
+        document.form1.mobile.focus();
+        return false;
+      }
+      if(isNaN(document.form1.mobile.value)) {
+        alert("Invalid Mobile No.");
+        document.form1.mobile.select();
+        return false;
+      }
+      if(document.form1.mobile.value.length!=10) {
+        alert("Mobile No. must be 10 digits!");
+        document.form1.mobile.select();
+        return false;
+      }
+      if(document.form1.email.value=="") {
+        alert("Enter the Email");
+        document.form1.email.focus();
+        return false;
+      }
+      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.form1.email.value)) {
+      
+      } else {
+        alert("Invalid E-mail!");
+        document.form1.email.select();
+        return false;
+      }
+      if(document.form1.aadhar.value=="") {
+        alert("Enter the Aadhar No.");
+        document.form1.aadhar.focus();
+        return false;
+      }
+      if(document.form1.location.value=="") {
+        alert("Enter the Location");
+        document.form1.location.focus();
+        return false;
+      }
+      if(document.form1.city.value=="") {
+        alert("Enter the City");
+        document.form1.city.focus();
+        return false;
+      }
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/admin">Government Regulator</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/admin">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Case Management
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/add_case"><i class="fas fa-plus-circle"></i> Register Case</a></li>
+              <li><a class="dropdown-item" href="/view_case"><i class="fas fa-list"></i> View Cases</a></li>
+              <li><a class="dropdown-item" href="/add_auth"><i class="fas fa-user-plus"></i> Create Authorized Parties</a></li>
+              <li><a class="dropdown-item" href="/view_auth"><i class="fas fa-users"></i> View Authorized Parties</a></li>
+              <li><a class="dropdown-item" href="/view_req"><i class="fas fa-envelope"></i> Requests</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/verify">Verify Evidence Integrity</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="../static/css/magnific-popup.css">
+  <!-- Auth Form Section -->
+  <section class="auth-section">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Image Column -->
+        <div class="col-lg-6 fadeInUp">
+          <div class="image-container">
+            <img src="../static/images/coc4.jpg" alt="Chain of Custody" class="img-fluid">
+            <div class="image-overlay">
+              <h3>Authorized Parties</h3>
+              <p>Create trusted individuals who can access case information in the Chain of Custody system</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Form Column -->
+        <div class="col-lg-6 fadeInUp delay-1">
+          <div class="form-card">
+            <div class="section-title">
+              <h2>Create Authorized Party</h2>
+            </div>
+            
+            <!-- Success Message -->
+            {% if msg=="success" %}
+            <div class="success-message">
+              <i class="fas fa-check-circle"></i> Authorized party created successfully. Sending notification...
+              <iframe src="http://iotcloud.co.in/testmail/testmail1.php?message={{mess}}&email={{email}}&subject=User Info" width="10" height="10" frameborder="0" style="display: none;"></iframe>
+              <iframe src="http://iotcloud.co.in/coc_chain/add_block.php?bc={{bc}}&data={{bdata}}" width="50" height="50" frameborder="0" style="display: none;"></iframe>
+              <script>
+                setTimeout(function () {
+                  window.location.href= '/view_auth';
+                }, 3000);
+              </script>
+            </div>
+            {% endif %}
+            
+            <!-- Error Message -->
+            {% if msg=="fail" %}
+            <div class="error-message">
+              <i class="fas fa-exclamation-circle"></i> Aadhar number already exists in the system!
+            </div>
+            {% endif %}
+            
+            <form name="form1" method="post" class="needs-validation">
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+                  <input type="text" id="name" name="name" class="form-control" placeholder="Enter full name">
+                </div>
+                
+                <div class="col-md-6">
+                  <label for="designation" class="form-label">Role / Designation <span class="text-danger">*</span></label>
+                  <input type="text" id="designation" name="designation" class="form-control" placeholder="Enter role or designation">
+                </div>
+                
+                <div class="col-md-6">
+                  <label for="mobile" class="form-label">Mobile Number <span class="text-danger">*</span></label>
+                  <input type="text" id="mobile" name="mobile" maxlength="10" class="form-control" placeholder="Enter 10-digit mobile number">
+                </div>
+                
+                <div class="col-md-6">
+                  <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                  <input type="email" id="email" name="email" class="form-control" placeholder="Enter email address">
+                </div>
+                
+                <div class="col-md-6">
+                  <label for="aadhar" class="form-label">Aadhar Number <span class="text-danger">*</span></label>
+                  <input type="text" id="aadhar" name="aadhar" maxlength="12" class="form-control" placeholder="Enter 12-digit Aadhar number">
+                </div>
+                
+                <div class="col-md-6">
+                  <label for="location" class="form-label">Location <span class="text-danger">*</span></label>
+                  <input type="text" id="location" name="location" class="form-control" placeholder="Enter location">
+                </div>
+                
+                <div class="col-md-6">
+                  <label for="city" class="form-label">City <span class="text-danger">*</span></label>
+                  <input type="text" id="city" name="city" class="form-control" placeholder="Enter city">
+                </div>
+                
+                <div class="col-12 mt-4">
+                  <button type="submit" name="btn" class="submit-btn" onClick="return validate()">
+                    <i class="fas fa-user-plus me-2"></i> Create Authorized Party
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-	<!-- Owl Carousel  -->
-	<link rel="stylesheet" href="../static/css/owl.carousel.min.css">
-	<link rel="stylesheet" href="../static/css/owl.theme.default.min.css">
-	<!-- Flexslider  -->
-	<link rel="stylesheet" href="../static/css/flexslider.css">
-	<!-- Flaticons  -->
-	<link rel="stylesheet" href="../static/fonts/flaticon/font/flaticon.css">
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-widget">
+            <h4>Chain of Custody</h4>
+            <p>FB-CoC: Fuzzy Hash Blockchain based Chain of Custody to Secure Digital Evidence for Multimedia Forensics</p>
+            <ul class="social-icons mt-4">
+              <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+              <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+              <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-widget">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="/admin"><i class="fas fa-chevron-right"></i> Home</a></li>
+              <li><a href="/add_case"><i class="fas fa-chevron-right"></i> Register Case</a></li>
+              <li><a href="/view_case"><i class="fas fa-chevron-right"></i> View Cases</a></li>
+              <li><a href="/verify"><i class="fas fa-chevron-right"></i> Verify Evidence</a></li>
+              <li><a href="/logout"><i class="fas fa-chevron-right"></i> Logout</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12">
+          <div class="footer-widget">
+            <h4>Contact Information</h4>
+            <ul class="contact-info">
+              <li><i class="fas fa-map-marker-alt"></i> Tamilnadu, India</li>
+              <li><i class="fas fa-phone"></i> <a href="tel://1234567920">+ 1235 2355 98</a></li>
+              <li><i class="fas fa-envelope"></i> <a href="mailto:coc@info.com">coc@info.com</a></li>
+              <li><i class="fas fa-clock"></i> Monday - Friday: 9:00 AM - 5:00 PM</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <div class="container">
+        <p>© 2025 Chain of Custody. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
 
-	<!-- Theme style  -->
-	<link rel="stylesheet" href="../static/css/style.css">
+  <!-- Back to Top Button -->
+  <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
 
-	<!-- Modernizr JS -->
-	<script src="../static/js/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
-
-<script language="javascript">
-function validate()
-{
-	if(document.form1.name.value=="")
-	{
-	alert("Enter the Name");
-	document.form1.name.focus();
-	return false;
-	}
-	if(document.form1.designation.value=="")
-	{
-	alert("Enter the Role / Designation");
-	document.form1.designation.focus();
-	return false;
-	}
-	if(document.form1.mobile.value=="")
-	{
-	alert("Enter the Mobile No.");
-	document.form1.mobile.focus();
-	return false;
-	}
-	if(isNaN(document.form1.mobile.value))
-	{
-	alert("Invalid Mobile No.");
-	document.form1.mobile.select();
-	return false;
-	}
-	if(document.form1.mobile.value.length!=10)
-	{
-	alert("Mobile No. must be 10 digits!");
-	document.form1.mobile.select();
-	return false;
-	}
-	if(document.form1.email.value=="")
-	{
-	alert("Enter the Email");
-	document.form1.email.focus();
-	return false;
-	}
-	if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(document.form1.email.value))  
-	{
-	
-	}
-	else
-	{
-	alert("Invalid E-mail!");
-	document.form1.email.select();
-	return false;
-	}
-	if(document.form1.aadhar.value=="")
-	{
-	alert("Enter the Aadhar No.");
-	document.form1.aadhar.focus();
-	return false;
-	}
-	if(document.form1.location.value=="")
-	{
-	alert("Enter the Location");
-	document.form1.location.focus();
-	return false;
-	}
-	if(document.form1.city.value=="")
-	{
-	alert("Enter the City");
-	document.form1.city.focus();
-	return false;
-	}
-
-return true;
-}
-</script>
-
-	</head>
-	<body>
-		
-	<!--<div class="ftco-loader"></div>-->
-	
-	<div id="page">
-	<nav class="ftco-nav" role="navigation" style="background:#003333">
-		<div class="top-menu">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-2">
-						<div id="ftco-logo"><a href="">Regulatory Compliance</a></div>
-					</div>
-					<div class="col-md-10 text-right menu-1">
-						<ul>
-							<li class="active"><a href="/admin">Home</a></li>
-							<li class="has-dropdown">
-								<a href="/view_case">Case</a>
-								<ul class="dropdown">
-									<li><a href="/add_case">Register Case</a></li>
-									<li><a href="/view_case">View Case</a></li>
-									<li><a href="/add_auth">Create Authorized Parties</a></li>
-									<li><a href="/view_auth">View Authorized Parties</a></li>
-									<li><a href="/view_req">Request</a></li>
-								</ul>
-							</li>
-							
-							
-							<li><a href="/verify">Verify Evidence Integrity</a></li>
-							<li><a href="logout">Logout</a></li>
-						</ul>
-					</div>
-				</div>
-				
-			</div>
-		</div>
-	</nav>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-
-	<div class="site-section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6">
-					<img src="../static/images/coc4.jpg" alt="Image" class="img-responsive img-rounded">
-				</div>
-				<div class="col-md-1"></div>
-				<div class="col-md-5">
-					<h2>Create - Authorized Party</h2>
-					{% if msg=="success" %}
-					<span style="color:#006600">Created Successfully</span>
-					<iframe src="http://iotcloud.co.in/testmail/testmail1.php?message={{mess}}&email={{email}}&subject=User Info" width="10" height="10" frameborder="0"></iframe>
-			  <iframe src="http://iotcloud.co.in/coc_chain/add_block.php?bc={{bc}}&data={{bdata}}" width="50" height="50" frameborder="0"></iframe>
-			 	<script>
-//Using setTimeout to execute a function after 5 seconds.
-setTimeout(function () {
-   //Redirect with JavaScript
-   window.location.href= '/view_auth';
-}, 3000);
-</script>
-					
-					{% endif %}
-					
-					{% if msg=="fail" %}
-					<span style="color:#993333">Aadhar No. Already Exist!</span>
-					{% endif %}
-					<form name="form1" method="post">
-					<div class="row">
-						
-						<div class="col-md-6">
-						<label>Name</label>
-						<input type="text" name="name" class="form-control">
-						</div>
-						
-						<div class="col-md-6">
-						<label>Role / Designation</label>
-						<input type="text" name="designation" class="form-control">
-						</div>
-						
-						<div class="col-md-6">
-						<label>Mobile No.</label>
-						<input type="text" name="mobile" maxlength="10" class="form-control">
-						</div>
-						
-						<div class="col-md-6">
-						<label>Email</label>
-						<input type="text" name="email" class="form-control">
-						</div>
-						
-						<div class="col-md-6">
-						<label>Aadhar No.</label>
-						<input type="text" name="aadhar" maxlength="12" class="form-control">
-						</div>
-						
-						<div class="col-md-6">
-						<label>Location</label>
-						<input type="text" name="location" class="form-control">
-						</div>
-						
-						<div class="col-md-6">
-						<label>City</label>
-						<input type="text" name="city" class="form-control">
-						</div>
-						
-					</div>
-					<br>
-					<div class="row">
-					<div class="col-md-12">
-					<input type="submit" name="btn" class="btn btn-primary" value="Create" onClick="return validate()">
-					</div>
-					</div>
-					<br>
-					
-					</form>
-					
-					
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<footer id="ftco-footer" role="contentinfo">
-		<div class="container">
-			<div class="row row-pb-md">
-				<div class="col-md-3 ftco-widget">
-					<h4>Chain of Custody</h4>
-					<p>FB-CoC: Fuzzy Hash Blockchain based Chain of Custody
-to Secure Digital Evidence for Multimedia Forensics</p>
-				</div>
-				<div class="col-md-3 col-md-push-1">
-					<h4>Navigation</h4>
-					<ul class="ftco-footer-links">
-						<li><a href="/admin">Home</a></li>
-						<li><a href="/logout">Logout</a></li>
-					</ul>
-				</div>
-
-				<div class="col-md-3 col-md-push-1">
-					<h4>Contact Information</h4>
-					<ul class="ftco-footer-links">
-						<li>Tamilnadu, India</li>
-						<li><a href="tel://1234567920">+ 1235 2355 98</a></li>
-						<li><a href="">coc@info.com</a></li>
-					</ul>
-				</div>
-
-				
-
-			</div>
-
-			<div class="row copyright">
-				<div class="col-md-12 text-center">
-					<p>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Chain of Custody  <a href="https://colorlib.com" target="_blank" ></a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-					<p>
-						<ul class="ftco-social-icons">
-							<li><a href="#"><i class="icon-twitter"></i></a></li>
-							<li><a href="#"><i class="icon-facebook"></i></a></li>
-							<li><a href="#"><i class="icon-linkedin"></i></a></li>
-							<li><a href="#"><i class="icon-dribbble"></i></a></li>
-						</ul>
-					</p>
-				</div>
-			</div>
-
-		</div>
-	</footer>
-	</div>
-
-	<div class="gototop js-top">
-		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
-	</div>
-	
-	<!-- jQuery -->
-	<script src="../static/js/jquery.min.js"></script>
-	<!-- jQuery Easing -->
-	<script src="../static/js/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="../static/js/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="../static/js/jquery.waypoints.min.js"></script>
-	<!-- Stellar Parallax -->
-	<script src="../static/js/jquery.stellar.min.js"></script>
-	<!-- Carousel -->
-	<script src="../static/js/owl.carousel.min.js"></script>
-	<!-- Flexslider -->
-	<script src="../static/js/jquery.flexslider-min.js"></script>
-	<!-- countTo -->
-	<script src="../static/js/jquery.countTo.js"></script>
-	<!-- Magnific Popup -->
-	<script src="../static/js/jquery.magnific-popup.min.js"></script>
-	<script src="../static/js/magnific-popup-options.js"></script>
-	<!-- Main -->
-	<script src="../static/js/main.js"></script>
-
-	 <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-23581568-13');
-</script>
-
-	</body>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
+  <!-- Custom JS -->
+  <script>
+    // Back to Top Button
+    $(window).scroll(function() {
+      if ($(this).scrollTop() > 200) {
+        $('.back-to-top').addClass('active');
+      } else {
+        $('.back-to-top').removeClass('active');
+      }
+    });
+    
+    $('.back-to-top').click(function(e) {
+      e.preventDefault();
+      $('html, body').animate({scrollTop: 0}, 800);
+      return false;
+    });
+    
+    // Add Animation Class
+    $(document).ready(function() {
+      // Add animation classes
+      $('.fadeInUp').addClass('fadeInUp');
+    });
+  </script>
+</body>
 </html>
-

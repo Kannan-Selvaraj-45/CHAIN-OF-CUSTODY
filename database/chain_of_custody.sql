@@ -106,7 +106,7 @@ CREATE TABLE `coc_case` (
   `cdate` varchar(20) NOT NULL,
   `details` text NOT NULL,
   `suspect` varchar(200) NOT NULL,
-  `name` varchar(20) NOT NULL,
+  `name` varchar(100) NOT NULL,
   `fname` varchar(20) NOT NULL,
   `gender` varchar(10) NOT NULL,
   `dob` varchar(20) NOT NULL,
@@ -181,7 +181,7 @@ INSERT INTO `coc_login` (`username`, `password`, `block_key`) VALUES
 
 CREATE TABLE `coc_register` (
   `id` int(11) NOT NULL,
-  `name` varchar(20) NOT NULL,
+  `name` varchar(100) NOT NULL,
   `designation` varchar(30) NOT NULL,
   `mobile` bigint(20) NOT NULL,
   `email` varchar(40) NOT NULL,
@@ -226,3 +226,101 @@ INSERT INTO `coc_request` (`id`, `uname`, `message`, `reply`, `status`, `dtime`,
 (1, 'AT1', 'Evidence ID:2, Case ID:C0220231, File: E2face19.jpg, Download Request by AT1', 'ok', 1, '2023-02-17 15:42:43', ''),
 (2, 'admin', 'proof required', '', 1, '2023-02-17 16:15:05', 'AT1'),
 (3, 'AT1', 'Evidence ID:3, Case ID:C0220231, File: E3face16.jpg, Download Request by AT1', '', 1, '2023-02-17 17:40:48', '');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `coc_access`
+--
+ALTER TABLE `coc_access`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `coc_allow`
+--
+ALTER TABLE `coc_allow`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `coc_attack`
+--
+ALTER TABLE `coc_attack`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `coc_case`
+--
+ALTER TABLE `coc_case`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `coc_evidence`
+--
+ALTER TABLE `coc_evidence`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `coc_login`
+--
+ALTER TABLE `coc_login`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `coc_register`
+--
+ALTER TABLE `coc_register`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `coc_request`
+--
+ALTER TABLE `coc_request`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `coc_access`
+--
+ALTER TABLE `coc_access`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `coc_allow`
+--
+ALTER TABLE `coc_allow`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `coc_attack`
+--
+ALTER TABLE `coc_attack`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `coc_case`
+--
+ALTER TABLE `coc_case`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `coc_evidence`
+--
+ALTER TABLE `coc_evidence`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `coc_register`
+--
+ALTER TABLE `coc_register`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `coc_request`
+--
+ALTER TABLE `coc_request`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;

@@ -1062,25 +1062,41 @@ def verify():
 
 @app.route('/down', methods=['GET', 'POST'])
 def down():
-    eid=request.args.get('eid')
-    mycursor = mydb.cursor()
-    mycursor.execute("SELECT * FROM coc_evidence where id=%s",(eid,))
-    data = mycursor.fetchone()
-    fn=data[3]
-    ff="E"+eid+".hash"
-    file = open('static/upload/'+ff, 'rb')
-    byte = file.read()
-    file.close()
-      
-    decodeit = open('static/down/'+fn, 'wb')
-    decodeit.write(base64.b64decode((byte)))
-    decodeit.close()
-    
-    path="static/down/"+fn
-
-
-    
-    return send_file(path, as_attachment=True)
+    try:
+        eid=request.args.get('eid')
+        mycursor = mydb.cursor()
+        mycursor.execute("SELECT * FROM coc_evidence where id=%s",(eid,))
+        data = mycursor.fetchone()
+        if not data:
+            return "Evidence not found", 404
+            
+        fn=data[3]
+        ff="E"+eid+".hash"
+        
+        # Ensure upload file exists
+        upload_path = 'static/upload/'+ff
+        if not os.path.exists(upload_path):
+            return "Evidence file not found", 404
+            
+        # Ensure download directory exists
+        down_dir = 'static/down'
+        if not os.path.exists(down_dir):
+            os.makedirs(down_dir)
+            
+        # Read and decode file
+        file = open(upload_path, 'rb')
+        byte = file.read()
+        file.close()
+        
+        down_path = os.path.join(down_dir, fn)
+        decodeit = open(down_path, 'wb')
+        decodeit.write(base64.b64decode((byte)))
+        decodeit.close()
+        
+        return send_file(down_path, as_attachment=True)
+        
+    except Exception as e:
+        return str(e), 500
 
 @app.route('/logout')
 def logout():
