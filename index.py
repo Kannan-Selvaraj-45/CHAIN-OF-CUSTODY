@@ -2,7 +2,6 @@ from flask import Flask
 import pymysql
 from pymysql import Error
 
-# Establish the database connection using PyMySQL
 mydb = pymysql.connect(
     host="localhost",
     user="root",
@@ -11,7 +10,6 @@ mydb = pymysql.connect(
     database="chain_of_custody"
 )
 
-# Initialize Flask app
 app = Flask(__name__)
 
 @app.route('/test-db')

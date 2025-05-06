@@ -1,29 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 2.11.6
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Feb 17, 2023 at 12:35 PM
--- Server version: 5.0.51
--- PHP Version: 5.2.6
-
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Database: `chain_of_custody`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `coc_access`
---
 
 CREATE TABLE `coc_access` (
   `id` int(11) NOT NULL,
@@ -35,20 +10,10 @@ CREATE TABLE `coc_access` (
   `dtime` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `coc_access`
---
-
 INSERT INTO `coc_access` (`id`, `uname`, `eid`, `case_id`, `view_st`, `download_st`, `dtime`) VALUES
 (1, 'AT1', 1, 'C0220231', 1, 1, '2023-02-17 17:43:11'),
 (2, 'AT1', 2, 'C0220231', 1, 2, '2023-02-17 17:51:50'),
 (3, 'AT1', 3, 'C0220231', 1, 1, '2023-02-17 17:43:11');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `coc_allow`
---
 
 CREATE TABLE `coc_allow` (
   `id` int(11) NOT NULL,
@@ -59,20 +24,10 @@ CREATE TABLE `coc_allow` (
   `dtime` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `coc_allow`
---
-
 INSERT INTO `coc_allow` (`id`, `uname`, `case_id`, `view_st`, `upload_st`, `dtime`) VALUES
 (1, 'AT1', 'C0220231', 1, 1, '2023-02-17 13:12:01'),
 (2, 'AT1', 'C0220232', 1, 0, '2023-02-17 13:11:48'),
 (3, 'AT2', 'C0220231', 1, 1, '2023-02-17 16:39:19');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `coc_attack`
---
 
 CREATE TABLE `coc_attack` (
   `id` int(11) NOT NULL,
@@ -84,18 +39,8 @@ CREATE TABLE `coc_attack` (
   `dtime` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `coc_attack`
---
-
 INSERT INTO `coc_attack` (`id`, `uname`, `eid`, `efile`, `case_id`, `status`, `dtime`) VALUES
 (1, 'AT2', 4, 'E4face16.jpg', 'C0220231', 1, '2023-02-17 17:15:59');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `coc_case`
---
 
 CREATE TABLE `coc_case` (
   `id` int(11) NOT NULL,
@@ -120,19 +65,9 @@ CREATE TABLE `coc_case` (
   `dtime` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `coc_case`
---
-
 INSERT INTO `coc_case` (`id`, `case_id`, `district`, `station`, `title`, `cdate`, `details`, `suspect`, `name`, `fname`, `gender`, `dob`, `address`, `district2`, `pincode`, `mobile`, `email`, `aadhar`, `status`, `dtime`) VALUES
 (1, 'C0220231', 'Karur', 'B2', 'Theft', '2023-02-02', 'Jewells Theft', 'customer', 'Prakash', 'Mohan', 'Male', '1986-08-12', 'RR Nagar', 'Karur', '624523', 9632548421, 'praksh@gmail.com', '678967896789', 0, '2023-02-15 21:07:54'),
 (2, 'C0220232', 'Thanjavur', 'B5', 'Land Problem', '2023-02-06', '2 group people clash', '-', 'Sivam', 'Ram', 'Male', '1983-02-21', 'DG Nagar', 'Thanjavur', '623497', 8865255441, 'sivam@gmail.com', '554644118833', 0, '2023-02-17 12:35:09');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `coc_evidence`
---
 
 CREATE TABLE `coc_evidence` (
   `id` int(11) NOT NULL,
@@ -144,21 +79,11 @@ CREATE TABLE `coc_evidence` (
   `upload_by` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `coc_evidence`
---
-
 INSERT INTO `coc_evidence` (`id`, `case_id`, `details`, `filename`, `dtime`, `status`, `upload_by`) VALUES
 (1, 'C0220231', 'Bill proof', 'E1coc2.jpg', '2023-02-17 12:22:19', 0, 'admin'),
 (2, 'C0220231', 'evidence', 'E2face19.jpg', '2023-02-17 12:21:46', 0, 'admin'),
 (3, 'C0220231', 'evidence', 'E3face16.jpg', '2023-02-17 13:18:54', 0, 'AT1'),
 (4, 'C0220231', 'my proof', 'E4face16.jpg', '2023-02-17 16:52:40', 0, 'AT2');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `coc_login`
---
 
 CREATE TABLE `coc_login` (
   `username` varchar(20) NOT NULL,
@@ -166,18 +91,8 @@ CREATE TABLE `coc_login` (
   `block_key` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `coc_login`
---
-
 INSERT INTO `coc_login` (`username`, `password`, `block_key`) VALUES
 ('admin', 'admin', 'bcoc2131');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `coc_register`
---
 
 CREATE TABLE `coc_register` (
   `id` int(11) NOT NULL,
@@ -194,19 +109,9 @@ CREATE TABLE `coc_register` (
   `dtime` timestamp NOT NULL default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `coc_register`
---
-
 INSERT INTO `coc_register` (`id`, `name`, `designation`, `mobile`, `email`, `aadhar`, `location`, `city`, `uname`, `pass`, `status`, `dtime`) VALUES
 (1, 'Ramkumar', 'Junior Advocate', 8896377412, 'ramkumar@gmail.com', '432156784321', 'FF Nagar', 'Salem', 'AT1', '123456', 1, '2023-02-15 21:00:40'),
 (2, 'Dharun', 'Police', 8875644231, 'dharun@gmail.com', '256344848454', 'DG Road', 'Karur', 'AT2', '123456', 1, '2023-02-15 21:02:59');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `coc_request`
---
 
 CREATE TABLE `coc_request` (
   `id` int(11) NOT NULL,
@@ -218,109 +123,24 @@ CREATE TABLE `coc_request` (
   `cname` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `coc_request`
---
-
 INSERT INTO `coc_request` (`id`, `uname`, `message`, `reply`, `status`, `dtime`, `cname`) VALUES
 (1, 'AT1', 'Evidence ID:2, Case ID:C0220231, File: E2face19.jpg, Download Request by AT1', 'ok', 1, '2023-02-17 15:42:43', ''),
 (2, 'admin', 'proof required', '', 1, '2023-02-17 16:15:05', 'AT1'),
 (3, 'AT1', 'Evidence ID:3, Case ID:C0220231, File: E3face16.jpg, Download Request by AT1', '', 1, '2023-02-17 17:40:48', '');
 
---
--- Indexes for dumped tables
---
+ALTER TABLE `coc_access` ADD PRIMARY KEY (`id`);
+ALTER TABLE `coc_allow` ADD PRIMARY KEY (`id`);
+ALTER TABLE `coc_attack` ADD PRIMARY KEY (`id`);
+ALTER TABLE `coc_case` ADD PRIMARY KEY (`id`);
+ALTER TABLE `coc_evidence` ADD PRIMARY KEY (`id`);
+ALTER TABLE `coc_login` ADD PRIMARY KEY (`username`);
+ALTER TABLE `coc_register` ADD PRIMARY KEY (`id`);
+ALTER TABLE `coc_request` ADD PRIMARY KEY (`id`);
 
---
--- Indexes for table `coc_access`
---
-ALTER TABLE `coc_access`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `coc_allow`
---
-ALTER TABLE `coc_allow`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `coc_attack`
---
-ALTER TABLE `coc_attack`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `coc_case`
---
-ALTER TABLE `coc_case`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `coc_evidence`
---
-ALTER TABLE `coc_evidence`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `coc_login`
---
-ALTER TABLE `coc_login`
-  ADD PRIMARY KEY (`username`);
-
---
--- Indexes for table `coc_register`
---
-ALTER TABLE `coc_register`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `coc_request`
---
-ALTER TABLE `coc_request`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `coc_access`
---
-ALTER TABLE `coc_access`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `coc_allow`
---
-ALTER TABLE `coc_allow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `coc_attack`
---
-ALTER TABLE `coc_attack`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `coc_case`
---
-ALTER TABLE `coc_case`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `coc_evidence`
---
-ALTER TABLE `coc_evidence`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `coc_register`
---
-ALTER TABLE `coc_register`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `coc_request`
---
-ALTER TABLE `coc_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `coc_access` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `coc_allow` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `coc_attack` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `coc_case` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `coc_evidence` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `coc_register` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `coc_request` MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;

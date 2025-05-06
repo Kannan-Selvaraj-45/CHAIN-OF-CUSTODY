@@ -77,7 +77,6 @@ def login():
         myresult = mycursor.fetchone()[0]
         if myresult>0:
             session['username'] = username1
-            #result=" You are Logged in sucessfully**"
             return redirect(url_for('admin')) 
         else:
             msg="You are logged in fail!!!"
@@ -109,6 +108,26 @@ def login_auth():
             
     return render_template('login_auth.html',msg=msg,act=act)
 
+
+@app.route('/digital-evidence-management')
+def digital_evidence_management():
+    return render_template('digital-evidence-management.html')
+
+@app.route('/forensic-analysis')
+def forensic_analysis():
+    return render_template('forensic-analysis.html')
+
+@app.route('/blockchain-solutions')
+def blockchain_solutions():
+    return render_template('blockchain-solutions.html')
+
+@app.route('/security-consulting')
+def security_consulting():
+    return render_template('security-consulting.html')
+
+@app.route('/training-certification')
+def training_certification():
+    return render_template('training-certification.html')
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
@@ -349,13 +368,12 @@ def add_case():
         print(mycursor.rowcount, "Registered Success")
         msg="success"
         act="1"
-        #mess="Dear "+name+", User ID: "+uname+", Password: "+pass1
-        ###
+        
         mycursor.execute('SELECT * FROM coc_case WHERE id=%s', (maxid,))
         dd = mycursor.fetchone()
         dtime=str(dd[19])
         bdata="ID:"+str(maxid)+", Case ID:"+case_id+", Status:Case Registered, Complainant Name: "+name+", Date: "+dtime
-        ###
+        
      
     
     return render_template('add_case.html',msg=msg,email=email,mess=mess,act=act,bc=bc,bdata=bdata)
@@ -370,7 +388,7 @@ def add_evidence():
     efile = ""
     data2 = []
     st = ""
-    case_id = ""  # Initialize case_id outside of the if block
+    case_id = ""    
 
     bdata = ""
     with open("bc.txt", "r") as f:

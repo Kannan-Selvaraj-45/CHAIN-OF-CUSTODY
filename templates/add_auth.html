@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Create Authorized Party for Chain of Custody System">
 
-  <!-- Open Graph / Social Media Meta Tags -->
+
   <meta property="og:title" content="Create Authorized Party - Chain of Custody"/>
   <meta property="og:image" content="../static/images/og-image.jpg"/>
   <meta property="og:url" content=""/>
@@ -17,16 +17,16 @@
   <meta name="twitter:image" content="../static/images/og-image.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- Google Fonts -->
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Font Awesome -->
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
-  <!-- Bootstrap 5 -->
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   
-  <!-- Custom CSS -->
+
   <style>
     :root {
       --primary-color: #3498db;
@@ -48,7 +48,7 @@
       background-color: var(--light-color);
     }
     
-    /* Navbar Styles */
+   
     .navbar {
       padding: 1rem 0;
       transition: all 0.3s ease;
@@ -79,7 +79,7 @@
       color: white;
     }
     
-    /* Removed the hover underline effect as requested */
+  
     
     .navbar-toggler {
       border: none;
@@ -90,7 +90,7 @@
       background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
     }
     
-    /* Dropdown Menu */
+  
     .dropdown-menu {
       border: none;
       border-radius: 10px;
@@ -117,7 +117,7 @@
       color: var(--primary-color);
     }
     
-    /* Auth Form Section */
+     
     .auth-section {
       padding: 100px 0;
     }
@@ -146,7 +146,7 @@
       background-color: var(--gov-color);
     }
     
-    /* Form Card */
+    
     .form-card {
       background-color: white;
       border-radius: 15px;
@@ -233,7 +233,7 @@
       font-size: 1.2rem;
     }
     
-    /* Image Container */
+     
     .image-container {
       position: relative;
       border-radius: 15px;
@@ -274,7 +274,7 @@
       margin-bottom: 0;
     }
     
-    /* Footer */
+    
     .footer {
       background-color: var(--secondary-color);
       color: white;
@@ -394,7 +394,7 @@
       font-size: 0.9rem;
     }
     
-    /* Back to Top Button */
+   
     .back-to-top {
       position: fixed;
       bottom: 30px;
@@ -425,7 +425,7 @@
       transform: translateY(-5px);
     }
     
-    /* Responsive Styles */
+ 
     @media (max-width: 991px) {
       .auth-section {
         padding: 80px 0;
@@ -450,8 +450,7 @@
         height: 300px;
       }
     }
-    
-    /* Animations */
+ 
     @keyframes fadeInUp {
       from {
         opacity: 0;
@@ -480,7 +479,7 @@
     }
   </style>
   
-  <!-- JavaScript Validation -->
+ 
   <script language="javascript">
     function validate() {
       if(document.form1.name.value=="") {
@@ -540,7 +539,7 @@
   </script>
 </head>
 <body>
-  <!-- Navigation -->
+ 
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
       <a class="navbar-brand" href="/admin">Government Regulator</a>
@@ -577,11 +576,11 @@
     </div>
   </nav>
 
-  <!-- Auth Form Section -->
+ 
   <section class="auth-section">
     <div class="container">
       <div class="row align-items-center">
-        <!-- Image Column -->
+      
         <div class="col-lg-6 fadeInUp">
           <div class="image-container">
             <img src="../static/images/coc4.jpg" alt="Chain of Custody" class="img-fluid">
@@ -592,14 +591,14 @@
           </div>
         </div>
         
-        <!-- Form Column -->
+      
         <div class="col-lg-6 fadeInUp delay-1">
           <div class="form-card">
             <div class="section-title">
               <h2>Create Authorized Party</h2>
             </div>
             
-            <!-- Success Message -->
+          
             {% if msg=="success" %}
             <div class="success-message">
               <i class="fas fa-check-circle"></i> Authorized party created successfully. Sending notification...
@@ -613,7 +612,7 @@
             </div>
             {% endif %}
             
-            <!-- Error Message -->
+       
             {% if msg=="fail" %}
             <div class="error-message">
               <i class="fas fa-exclamation-circle"></i> Aadhar number already exists in the system!
@@ -670,7 +669,7 @@
     </div>
   </section>
 
-  <!-- Footer -->
+ 
   <footer class="footer">
     <div class="container">
       <div class="row">
@@ -718,18 +717,16 @@
     </div>
   </footer>
 
-  <!-- Back to Top Button -->
+ 
   <a href="#" class="back-to-top"><i class="fas fa-arrow-up"></i></a>
-
-  <!-- Bootstrap JS -->
+ 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  
-  <!-- jQuery -->
+   
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   
-  <!-- Custom JS -->
+  
   <script>
-    // Back to Top Button
+   
     $(window).scroll(function() {
       if ($(this).scrollTop() > 200) {
         $('.back-to-top').addClass('active');
@@ -744,9 +741,9 @@
       return false;
     });
     
-    // Add Animation Class
+     
     $(document).ready(function() {
-      // Add animation classes
+   
       $('.fadeInUp').addClass('fadeInUp');
     });
   </script>

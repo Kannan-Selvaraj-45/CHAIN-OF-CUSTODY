@@ -7,7 +7,6 @@
     <title>{% block title %}Chain of Custody{% endblock %}</title>
     <meta name="description" content="{% block meta_description %}Chain of Custody System{% endblock %}">
 
-    <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content="{% block og_title %}Chain of Custody{% endblock %}"/>
     <meta property="og:image" content="../static/images/og-image.jpg"/>
     <meta property="og:url" content=""/>
@@ -17,16 +16,13 @@
     <meta name="twitter:image" content="../static/images/og-image.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
     
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
-    <!-- Custom CSS -->
+    
     <style>
         :root {
             --primary-color: #3498db;
@@ -46,7 +42,7 @@
             background-color: var(--light-color);
         }
 
-        /* Footer Styles */
+ 
         #ftco-footer {
             background-color: var(--dark-color);
             color: var(--light-color);
@@ -132,7 +128,6 @@
     {% block extra_css %}{% endblock %}
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand" href="/">Chain of Custody</a>
@@ -160,7 +155,6 @@
     {% block content %}
     {% endblock %}
 
-    <!-- Footer -->
     <footer id="ftco-footer" role="contentinfo">
         <div class="container">
             <div class="row row-pb-md">
@@ -180,9 +174,7 @@
             <div class="row copyright">
                 <div class="col-md-12 text-center">
                     <p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Chain of Custody  <a href="https://colorlib.com" target="_blank"></a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                     <p>
                         <ul class="ftco-social-icons">
@@ -196,10 +188,9 @@
             </div>
         </div>
     </footer>
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- jQuery -->
+     
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     {% block extra_js %}{% endblock %}
